@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		995F329E201DC0D900B5954F /* JobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE68912B1CB5FDC60018C340 /* JobTests.swift */; };
+		995F329F201DC12D00B5954F /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE68912D1CB5FEC70018C340 /* MoneyTests.swift */; };
+		995F32A1201DC15C00B5954F /* SimpleDomainModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6891241CB5D90B0018C340 /* SimpleDomainModelTests.swift */; };
 		FE6891181CB5D8E40018C340 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6891171CB5D8E40018C340 /* main.swift */; };
 		FE6891251CB5D90B0018C340 /* SimpleDomainModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6891241CB5D90B0018C340 /* SimpleDomainModelTests.swift */; };
 		FE68912A1CB5D9130018C340 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6891171CB5D8E40018C340 /* main.swift */; };
-		FE68912C1CB5FDC60018C340 /* JobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE68912B1CB5FDC60018C340 /* JobTests.swift */; };
-		FE68912E1CB5FEC70018C340 /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE68912D1CB5FEC70018C340 /* MoneyTests.swift */; };
 		FE6891301CB6023B0018C340 /* PersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE68912F1CB6023B0018C340 /* PersonTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,7 @@
 				TargetAttributes = {
 					FE6891131CB5D8E40018C340 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 73V62N4362;
 						LastSwiftMigration = 0800;
 					};
 					FE6891211CB5D90B0018C340 = {
@@ -185,6 +187,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE6891181CB5D8E40018C340 /* main.swift in Sources */,
+				995F32A1201DC15C00B5954F /* SimpleDomainModelTests.swift in Sources */,
+				995F329E201DC0D900B5954F /* JobTests.swift in Sources */,
+				995F329F201DC12D00B5954F /* MoneyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,10 +197,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE68912C1CB5FDC60018C340 /* JobTests.swift in Sources */,
 				FE68912A1CB5D9130018C340 /* main.swift in Sources */,
 				FE6891301CB6023B0018C340 /* PersonTests.swift in Sources */,
-				FE68912E1CB5FEC70018C340 /* MoneyTests.swift in Sources */,
 				FE6891251CB5D90B0018C340 /* SimpleDomainModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +296,7 @@
 		FE68911C1CB5D8E40018C340 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 73V62N4362;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -301,6 +305,7 @@
 		FE68911D1CB5D8E40018C340 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 73V62N4362;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
