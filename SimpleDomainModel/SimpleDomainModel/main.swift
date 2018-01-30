@@ -27,47 +27,51 @@ public struct Money {
   public var amount : Int
   public var currency : String
   
-    public mutating func convert(_ to: String) -> Money {
-        var ret = Money(amount: amount, currency: currency)
-        if currency == to {
-            return ret
-        } else if currency != "USD"{ //converting all money to USD
-            
-            if to == "GBP" { //pounds
-                ret.amount = ret.amount * 2
-            } else if currency == "EUR" { //euro
-                ret.amount = (ret.amount * 3) / 2
+    public func convert(_ to: String) -> Money {
+        var retAmount = self.amount
+        var retCurrency = self.currency
+        if retCurrency == to {
+            return Money(amount: retAmount, currency: retCurrency)
+        } else if retCurrency != "USD" { //converting all money to USD
+            if retCurrency == "GBP" { //pounds
+                retAmount = retAmount * 2
+                retCurrency = "USD"
+            } else if retCurrency == "EUR" { //euro
+                retAmount = (retAmount / 3) * 2
+                retCurrency = "USD"
             } else { //canadian
-                ret.amount = (ret.amount * 5) / 4
+                retAmount = (retAmount / 5) * 4
+                retCurrency = "USD"
             }
         }
         if to == "USD" {
-            return Money(amount: amount, currency: currency)
+            return Money(amount: retAmount, currency: retCurrency)
         } else if to == "GBP" {
-            ret.amount = ret.amount * 2
+            retAmount = retAmount / 2
+            retCurrency = "GBP"
         } else if to == "EUR" {
-            ret.amount = (ret.amount / 2) * 3
+            retAmount = (retAmount / 2) * 3
+            retCurrency = "EUR"
         } else if to == "CAN"{
-            ret.amount = (ret.amount / 4) * 5
+            retAmount = (retAmount / 4) * 5
+            retCurrency = "CAN"
         } else {
             print("INVALID CURRENCY YOU DUMMY")
         }
-        return ret
+        return Money(amount: retAmount, currency: retCurrency)
     }
     
-    public mutating func add(_ to: Money) -> Money {
-        var ret = Money(amount: self.amount, currency: currency)
-        ret.convert(to.currency)
+    public func add(_ to: Money) -> Money {
+        var ret = Money(amount: self.amount, currency: self.currency)
+        ret = ret.convert(to.currency)
         ret.amount = ret.amount + to.amount
-        ret.convert(self.currency)
         return ret
     }
     
     public func subtract(_ from: Money) -> Money {
-        var ret = Money(amount: self.amount, currency: currency)
-        ret.convert(from.currency)
+        var ret = Money(amount: self.amount, currency: self.currency)
+        ret = ret.convert(from.currency)
         ret.amount = ret.amount - from.amount
-        ret.convert(self.currency)
         return ret
     }
 }
@@ -85,9 +89,12 @@ open class Job {
   }
   
   public init(title : String, type : JobType) {
+    self.title = title
+    self.type = type
   }
   
   open func calculateIncome(_ hours: Int) -> Int {
+    return 0
   }
   
   open func raise(_ amt : Double) {
@@ -104,14 +111,14 @@ open class Person {
 
   fileprivate var _job : Job? = nil
   open var job : Job? {
-    get { }
+    get { return nil}
     set(value) {
     }
   }
   
   fileprivate var _spouse : Person? = nil
   open var spouse : Person? {
-    get { }
+    get { return nil}
     set(value) {
     }
   }
@@ -123,6 +130,7 @@ open class Person {
   }
   
   open func toString() -> String {
+    return ""
   }
 }
 
@@ -136,9 +144,11 @@ open class Family {
   }
   
   open func haveChild(_ child: Person) -> Bool {
+    return true
   }
   
   open func householdIncome() -> Int {
+    return 0
   }
 }
 
