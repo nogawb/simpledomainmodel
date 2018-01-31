@@ -11,7 +11,7 @@ import XCTest
 import SimpleDomainModel
 
 class JobTests: XCTestCase {
-  /*
+  
   func testCreateSalaryJob() {
     let job = Job(title: "Guest Lecturer", type: Job.JobType.Salary(1000))
     XCTAssert(job.calculateIncome(50) == 1000)
@@ -37,5 +37,4 @@ class JobTests: XCTestCase {
     job.raise(1.0)
     XCTAssert(job.calculateIncome(10) == 160)
   }
-  */
 }

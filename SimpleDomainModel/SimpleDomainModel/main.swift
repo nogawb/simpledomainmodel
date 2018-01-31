@@ -94,11 +94,18 @@ open class Job {
   }
   
   open func calculateIncome(_ hours: Int) -> Int {
-    return 0
+    switch type {
+           case .Hourly(let rate): return Int(Double(hours) * rate)
+           case .Salary(let yearly): return yearly
+    }
   }
   
   open func raise(_ amt : Double) {
-  }
+    switch type {
+              case .Hourly(let rate): type = JobType.Hourly(rate + amt)
+              case .Salary(let yearly): type = JobType.Salary(yearly + Int(amt))
+           }
+    }
 }
 
 ////////////////////////////////////
@@ -111,15 +118,21 @@ open class Person {
 
   fileprivate var _job : Job? = nil
   open var job : Job? {
-    get { return nil}
+    get { return self._job}
     set(value) {
+        if age > 16 {
+        self._job = value
+        }
     }
   }
   
   fileprivate var _spouse : Person? = nil
   open var spouse : Person? {
-    get { return nil}
+    get { return self._spouse}
     set(value) {
+        if age > 18 {
+            self._spouse = value
+        }
     }
   }
   
@@ -130,7 +143,8 @@ open class Person {
   }
   
   open func toString() -> String {
-    return ""
+    return "[Person: firstName:\(firstName) lastName:\(lastName) " +
+            "age:\(age) job:\(job?.title) spouse:\(spouse?.firstName)]"
   }
 }
 
@@ -141,14 +155,28 @@ open class Family {
   fileprivate var members : [Person] = []
   
   public init(spouse1: Person, spouse2: Person) {
+    members.append(spouse1)
+        members.append(spouse2)
+        spouse1.spouse = spouse2
+        spouse2.spouse = spouse1
   }
   
   open func haveChild(_ child: Person) -> Bool {
-    return true
+    let legal = members.contains { (it) -> Bool in it.age > 21 }
+        if legal {
+         members.append(child)
+        }
+    return legal
   }
   
   open func householdIncome() -> Int {
-    return 0
+    var total = 0
+    for index in 0...(members.count - 1){
+        if members[index]._job != nil {
+            total += members[index]._job!.calculateIncome(2000)
+        }
+    }
+    return total
   }
 }
 
